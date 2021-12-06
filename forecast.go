@@ -11,7 +11,7 @@ type ForecastBase struct {
 	WindSpeedMPS float64 `json:"wind_speed"` // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour. How to change units used
 	WindGustMPS float64 `json:"wind_gust"` // (where available) Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour. How to change units used
 	WindDeg float64 `json:"wind_deg"` // Wind direction, degrees (meteorological)
-	Weather ObsWeather `json:"weather"`
+	Weather []ObsWeather `json:"weather"`
 }
 
 type Current struct {
