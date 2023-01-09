@@ -20,6 +20,7 @@ type Current struct {
 	SunsetEpochS int64 `json:"sunset"` // Sunset time, Unix, UTC
 	TempK float64 `json:"temp"` // Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit. How to change units used
 	FeelsLikeK float64 `json:"feels_like"` // Temperature. This temperature parameter accounts for the human perception of weather. Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+	PrecipitationPct float64 `json:"pop"` // Probability of precipitation
 	Rain ObsPrecip `json:"rain"`
 	Snow ObsPrecip `json:"snow"`
 }
