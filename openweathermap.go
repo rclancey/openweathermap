@@ -35,7 +35,7 @@ func NewOpenWeatherMapClient(apiKey, cacheDir string, cacheTime time.Duration) (
 		return nil, err
 	}
 	opts := apiclient.APIClientOptions{
-		BaseURL: "https://api.openweathermap.org/data/2.5/",
+		BaseURL: "https://api.openweathermap.org/data/",
 		RequestTimeout: 0,
 		CacheStore: fscache.NewFSCacheStore(cacheDir),
 		MaxCacheTime: cacheTime,
@@ -55,7 +55,7 @@ func (c *OpenWeatherMapClient) Get(rsrc string, args url.Values) (*http.Response
 
 func (c *OpenWeatherMapClient) CurrentConditions(args url.Values) (*Observation, error) {
 	obs := &Observation{}
-	rsrc := "weather"
+	rsrc := "2.5/weather"
 	err := c.client.GetObj(rsrc, args, obs)
 	if err != nil {
 		return nil, err
@@ -65,7 +65,7 @@ func (c *OpenWeatherMapClient) CurrentConditions(args url.Values) (*Observation,
 
 func (c *OpenWeatherMapClient) Forecast(lat, lon float64) (*Forecast, error) {
 	fcst := &Forecast{}
-	rsrc := "onecall"
+	rsrc := "3.0/onecall"
 	args := url.Values{}
 	args.Set("lat", strconv.FormatFloat(lat, 'f', -1, 64))
 	args.Set("lon", strconv.FormatFloat(lon, 'f', -1, 64))
